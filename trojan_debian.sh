@@ -689,7 +689,7 @@ while true; do
   green " Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg"
   green " ========================================================================"
   echo
-  green  " 1. 一键安装trojan"
+  green  " 1. 一键安装trojan（包含BBR）"
   green  " 2. 一键更新trojan"
   red    " 3. 一键卸载trojan"
   yellow " 0. 退出安装trojan"
