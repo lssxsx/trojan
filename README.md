@@ -12,6 +12,7 @@ Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
 <code>
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/svr)
 </code>
+</p>
 ---
 支持的系统：
 - debian >=9(理论上应该支持debian 8)
