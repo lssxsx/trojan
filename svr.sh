@@ -774,7 +774,7 @@ while true; do
 		green  " ==========================="
         tcp-bbr
 		green " ========================================================================="
-		green " 简介：debian一键安装trojan"
+		green " 简介：debian一键安装trojan服务端"
 		green " 系统：>=debian9"
 		green " Youtube：米月"
 		green " 电报群：https://t.me/mi_yue"
