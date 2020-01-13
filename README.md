@@ -7,14 +7,21 @@ Youtube：米月
 电报群：https://t.me/mi_yue
 
 Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
----
-# 安装命令：
+------------------------------------------------------------------------------------------------------
+# Trojan服务器端：
 <code>
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/svr)
 </code>
 </p>
 </p>
----
+------------------------------------------------------------------------------------------------------
+# Trojan客户端：
+<code>
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/cli)
+</code>
+</p>
+</p>
+------------------------------------------------------------------------------------------------------
 支持的系统：
 - debian >=9(理论上应该支持debian 8)
 
