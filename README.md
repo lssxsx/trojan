@@ -16,7 +16,7 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsqu
 </p>
 ------------------------------------------------------------------------------------------------------
 </p>
-# Trojan客户端：
+<h2># Trojan客户端：</h2>
 </p>
 <code>
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/cli)
