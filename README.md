@@ -15,6 +15,7 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsqu
 </p>
 </p>
 ------------------------------------------------------------------------------------------------------
+</p>
 # Trojan客户端：
 <code>
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/cli)
@@ -22,6 +23,7 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsqu
 </p>
 </p>
 ------------------------------------------------------------------------------------------------------
+</p>
 支持的系统：
 - debian >=9(理论上应该支持debian 8)
 
