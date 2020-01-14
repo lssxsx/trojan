@@ -218,7 +218,7 @@ cat > /etc/v2ray/config.json << EOF
     ]
   },
   "routing": {
-    "domainStrategy": "AsIs",
+    "domainStrategy": "UseIP",
     "rules": [
       {"type":"field","inboundTag":"transparent","outboundTag":"dns-out","network":"udp"},   
       {"type":"field","outboundTag":"direct","ip":["127.0.0.1","114.114.114.114"]},
