@@ -463,7 +463,6 @@ checkupdate(){
   bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 }
 
-
 DELAY=3 
 
 while true; do
