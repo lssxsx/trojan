@@ -278,8 +278,7 @@ systemctl restart v2ray > /dev/null 2>&1
 
 install_Iptables_Proxy(){
 
-var=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
-jy_ip=${var%.*}".0"
+jy_ip=${loc_ip%.*}".0"
 
 cat << EOF > /usr/local/bin/iptables_proxy
 #!/bin/bash
@@ -321,34 +320,54 @@ systemctl daemon-reload > /dev/null 2>&1
 systemctl enable iptables-proxy > /dev/null 2>&1
 systemctl restart iptables-proxy > /dev/null 2>&1
 
+}
+
+set_ip_dns(){
+
+eth_n=$(ip --oneline link show up | grep -v "lo" | awk '{print$2;exit}' | cut -d':' -f1 | cut -d'@' -f1)
+
+cat << EOF > /etc/network/interfaces
+source /etc/network/interfaces.d/*
+
+auto lo
+
+auto  $eth_n
+iface $eth_n inet static
+  address $loc_ip
+  netmask 255.255.255.0
+  gateway $gate_ip
+EOF
 
 cat << EOF > /etc/resolv.conf
 nameserver 127.0.0.1
 nameserver 8.8.8.8
-nameserver 1.1.1.1
+nameserver 114.114.114.114
 EOF
-
-cat << EOF > /etc/resolvconf/resolv.conf.d/base
-nameserver 127.0.0.1
-nameserver 8.8.8.8
-nameserver 1.1.1.1
-EOF
-
 
 }
 
 
 install_tropxy(){
 
-    green "========================="
-    green " trojan服务器域名"
-    green "========================="
-    read svr_domain
+  green "========================="
+  green " 输入本机IP"
+  green "========================="
+  read loc_ip
 
-    green "========================="
-    green " trojan服务器密码"
-    green "========================="
-    read svr_pwd
+  green "========================="
+  green " 输入网关IP（ros的ip或者爱快ip）"
+  green "========================="
+  read gate_ip
+
+  green "========================="
+  green " trojan服务器域名"
+  green "========================="
+  read svr_domain
+
+  green "========================="
+  green " trojan服务器密码"
+  green "========================="
+  read svr_pwd
 
 cd ~
 
@@ -367,7 +386,7 @@ rm -rf /etc/apt/sources.list.d/unstable.list
 rm -rf /etc/apt/preferences.d/limit-unstable
 
 apt update && apt upgrade -y
-apt install --no-install-recommends --no-install-suggests -y sudo locales net-tools dnsutils ipset wget curl unzip zip resolvconf
+apt install --no-install-recommends --no-install-suggests -y sudo locales net-tools dnsutils ipset wget curl unzip zip
 source /etc/profile
 
 green "========================="
@@ -389,6 +408,11 @@ green "========================="
 green " 开始设置防火墙"
 green "========================="
 install_Iptables_Proxy
+
+green "========================="
+green " 开始设置本机固定IP"
+green "========================="
+set_ip_dns
 
   green " =========================安装完成========================================"
 	green " 简介：一键安装TroProxy客户端"
