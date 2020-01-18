@@ -28,7 +28,7 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsqu
 ------------------------------------------------------------------------------------------------------
 </p>
 支持的系统：
-- debian >=9(理论上应该支持debian 8)
+- debian10
 
 
 
