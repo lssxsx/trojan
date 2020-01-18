@@ -122,11 +122,12 @@ deb http://ftp.debian.org/debian stretch-backports main
 deb-src http://ftp.debian.org/debian stretch-backports main
 EOF
     fi
-#source /etc/profile
- apt-get update -qq
- export DEBIAN_FRONTEND=noninteractive 
-  apt-get install iptables-persistent -q -y > /dev/null
-apt-get install sudo curl socat xz-utils wget apt-transport-https gnupg gnupg2 dnsutils lsb-release python-pil unzip resolvconf -qq -y
+export DEBIAN_FRONTEND=noninteractive
+apt-get upgrade -q -y
+apt-get update
+apt-get install iptables-persistent -q -y > /dev/null
+apt-get install sudo curl socat xz-utils apt-transport-https gnupg gnupg2 dnsutils lsb-release python-pil unzip resolvconf -qq -y
+source /etc/profile
 else
   clear
   green  " =============="
