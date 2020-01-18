@@ -122,7 +122,7 @@ deb http://ftp.debian.org/debian stretch-backports main
 deb-src http://ftp.debian.org/debian stretch-backports main
 EOF
     fi
-source /etc/profile
+#source /etc/profile
  apt-get update -qq
  export DEBIAN_FRONTEND=noninteractive 
   apt-get install iptables-persistent -q -y > /dev/null
