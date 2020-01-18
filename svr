@@ -99,20 +99,7 @@ set -e
 updatesystem(){
   apt-get update -qq
 }
-##############更新软件包########
-upgradesystem(){
-  if [[ $dist = debian ]]; then
-    export DEBIAN_FRONTEND=noninteractive 
-    apt-get upgrade -q -y
-    apt-get autoremove -qq -y > /dev/null
- else
-  clear
-    green  " =============="
-	red " 软件包更新错误"
-	green  " =============="
-    exit 1;
- fi
-}
+
 #########打开防火墙端口########################
 openfirewall(){
   iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
@@ -121,25 +108,47 @@ openfirewall(){
 }
 ##########安装依赖包#############
 installdependency(){
+    green  " ========================="
+  yellow " 开始安装依赖包"
   green  " ========================="
-  yellow " 开始安装trojan nginx acme"
-  green  " ========================="
+  
   if [[ $dist = debian ]]; then
-    apt-get install sudo curl socat xz-utils wget apt-transport-https gnupg gnupg2 dnsutils lsb-release python-pil unzip resolvconf -qq -y
-    if [[ $(lsb_release -cs) == jessie ]]; then
-	  green  " ==================================="
-	  yellow " debian8系统不支持python3-qrcode跳过"
-	  green  " ==================================="
-      else
-        apt-get install python3-qrcode -qq -y
+  export DEBIAN_FRONTEND=noninteractive 
+  apt-get install iptables-persistent -q -y > /dev/null
+
+    if [[ $(lsb_release -cs) == stretch ]] || [[ $(lsb_release -cs) == buster ]]; then
+cat << EOF > /etc/apt/sources.list
+deb http://deb.debian.org/debian/ stable main contrib non-free
+deb-src http://deb.debian.org/debian/ stable main contrib non-free
+deb http://deb.debian.org/debian/ stable-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ stable-updates main contrib non-free
+deb http://deb.debian.org/debian-security stable/updates main
+deb-src http://deb.debian.org/debian-security stable/updates main
+deb http://ftp.debian.org/debian buster-backports main
+deb-src http://ftp.debian.org/debian buster-backports main
+EOF
+    elif [[ $(lsb_release -cs) == jessie ]]; then
+      cat << EOF > /etc/apt/sources.list
+deb http://deb.debian.org/debian/ oldstable main contrib non-free
+deb-src http://deb.debian.org/debian/ oldstable main contrib non-free
+deb http://deb.debian.org/debian/ oldstable-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ oldstable-updates main contrib non-free
+deb http://deb.debian.org/debian-security oldstable/updates main
+deb-src http://deb.debian.org/debian-security oldstable/updates main
+deb http://ftp.debian.org/debian stretch-backports main
+deb-src http://ftp.debian.org/debian stretch-backports main
+EOF
     fi
- else
+apt-get update
+apt-get install sudo curl socat xz-utils wget apt-transport-https gnupg gnupg2 dnsutils lsb-release python-pil unzip resolvconf -qq -y
+else
   clear
-    green  " =============="
-	red " 依赖包安装错误"
+  green  " =============="
+	red " 依赖包更新出错"
 	green  " =============="
-    exit 1;
+  exit 1;
  fi
+
 }
 ###从官方源开始安装trojan####
 installtrojan-gfw(){
@@ -388,19 +397,7 @@ fi
 systemctl daemon-reload
    
 }
-##########安装iptables-persistent########
-iptables-persistent(){
-  if [[ $dist = debian ]]; then
-    export DEBIAN_FRONTEND=noninteractive 
-    apt-get install iptables-persistent -q -y > /dev/null
- else
-  clear
-	green  " ==========================="
-	red " 安装iptables-persistent错误"
-	green  " ==========================="
-    exit 1;
- fi
-}
+
 ############安装DNSMASQ#################
 dnsmasq(){
     if [[ $dist = debian ]]; then
@@ -493,11 +490,6 @@ while true; do
 		yellow " 开始安装dnsmasq"
 		green  " ==============="
         dnsmasq
-        green  " =================="
-		yellow " 开始更新系统软件包"
-		green  " =================="
-        upgradesystem
-        green  " =============="
 		yellow " 开始安装依赖包"
 		green  " =============="
         installdependency
@@ -551,11 +543,6 @@ while true; do
 		yellow " 设置自启动trojan nginx"
 		green  " ======================"
         autostart
-		green  " ==========================="
-		yellow " 开始安装iptables-persistent"
-		green  " ==========================="
-        iptables-persistent  
-        green  " ==========================="
 		yellow " 开始安装bbr"
 		green  " ==========================="
         tcp-bbr
