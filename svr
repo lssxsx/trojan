@@ -108,10 +108,7 @@ openfirewall(){
 }
 ##########安装依赖包#############
 installdependency(){
-    green  " ========================="
-  yellow " 开始安装依赖包"
-  green  " ========================="
-  
+ 
   if [[ $dist = debian ]]; then
   export DEBIAN_FRONTEND=noninteractive 
   apt-get install iptables-persistent -q -y > /dev/null
@@ -486,12 +483,13 @@ while true; do
         userinput
         osdist
         updatesystem
-        green  " ==============="
+    green  " ==============="
 		yellow " 开始安装dnsmasq"
 		green  " ==============="
         dnsmasq
+    green  " ============="   
 		yellow " 开始安装依赖包"
-		green  " =============="
+		green  " ============="
         installdependency
         if isresolved $domain
         then
@@ -501,11 +499,7 @@ while true; do
 		red " 请检查域名和vps的地址是否一致"
 		green  " =========================="
         exit -1
-        clear
         fi
-        green  " =============="
-		yellow " 打开防火墙端口"
-		green  " =============="
         openfirewall
         green  " =============="
 		yellow " 开始安装trojan"
@@ -531,9 +525,6 @@ while true; do
 		yellow " 开始安装安装证书"
 		green  " ================"
         installcert
-        green  " ============"
-		yellow " 开始配置证书"
-		green  " ============"
         installkey
         green  " =============="
 		yellow " 开始配置trojan"
