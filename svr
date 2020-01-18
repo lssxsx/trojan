@@ -97,21 +97,7 @@ set -e
 }
 ###############更新系统list################
 updatesystem(){
-  apt-get update -qq
-}
-
-#########打开防火墙端口########################
-openfirewall(){
-  iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
-  iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
-  iptables -I OUTPUT -j ACCEPT
-}
-##########安装依赖包#############
-installdependency(){
- 
-  if [[ $dist = debian ]]; then
-  export DEBIAN_FRONTEND=noninteractive 
-  apt-get install iptables-persistent -q -y > /dev/null
+if [[ $dist = debian ]]; then
 
     if [[ $(lsb_release -cs) == stretch ]] || [[ $(lsb_release -cs) == buster ]]; then
 cat << EOF > /etc/apt/sources.list
@@ -137,7 +123,9 @@ deb-src http://ftp.debian.org/debian stretch-backports main
 EOF
     fi
 source /etc/profile
-apt-get update
+ apt-get update -qq
+ export DEBIAN_FRONTEND=noninteractive 
+  apt-get install iptables-persistent -q -y > /dev/null
 apt-get install sudo curl socat xz-utils wget apt-transport-https gnupg gnupg2 dnsutils lsb-release python-pil unzip resolvconf -qq -y
 else
   clear
@@ -146,8 +134,16 @@ else
 	green  " =============="
   exit 1;
  fi
-
+ 
 }
+
+#########打开防火墙端口########################
+openfirewall(){
+  iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+  iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+  iptables -I OUTPUT -j ACCEPT
+}
+
 ###从官方源开始安装trojan####
 installtrojan-gfw(){
   bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
@@ -488,10 +484,6 @@ while true; do
 		yellow " 开始安装dnsmasq"
 		green  " ==============="
         dnsmasq
-    green  " ============="   
-		yellow " 开始安装依赖包"
-		green  " ============="
-        installdependency
         if isresolved $domain
         then
         :
