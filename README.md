@@ -10,7 +10,7 @@ Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
 ------------------------------------------------------------------------------------------------------
 <h1>Trojan服务端：</h1>
 <code>
-apt install wget
+apt install wget -y
 </p>
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/svr)
 </code>
