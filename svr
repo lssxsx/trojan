@@ -99,27 +99,25 @@ set -e
 updatesystem(){
 if [[ $dist = debian ]]; then
 
-    if [[ $(lsb_release -cs) == stretch ]] || [[ $(lsb_release -cs) == buster ]]; then
+    if [[ $(lsb_release -cs) == buster ]]; then
 cat << EOF > /etc/apt/sources.list
-deb http://deb.debian.org/debian/ stable main contrib non-free
-deb-src http://deb.debian.org/debian/ stable main contrib non-free
-deb http://deb.debian.org/debian/ stable-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ stable-updates main contrib non-free
-deb http://deb.debian.org/debian-security stable/updates main
-deb-src http://deb.debian.org/debian-security stable/updates main
-deb http://ftp.debian.org/debian buster-backports main
-deb-src http://ftp.debian.org/debian buster-backports main
+deb http://deb.debian.org/debian buster main contrib non-free
+
+deb-src http://deb.debian.org/debian buster main contrib non-free
+
+deb http://security.debian.org/debian-security buster/updates main contrib
+
+deb-src http://security.debian.org/debian-security buster/updates main contrib
 EOF
-    elif [[ $(lsb_release -cs) == jessie ]]; then
+    elif [[ $(lsb_release -cs) == stretch ]]; then
       cat << EOF > /etc/apt/sources.list
-deb http://deb.debian.org/debian/ oldstable main contrib non-free
-deb-src http://deb.debian.org/debian/ oldstable main contrib non-free
-deb http://deb.debian.org/debian/ oldstable-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ oldstable-updates main contrib non-free
-deb http://deb.debian.org/debian-security oldstable/updates main
-deb-src http://deb.debian.org/debian-security oldstable/updates main
-deb http://ftp.debian.org/debian stretch-backports main
-deb-src http://ftp.debian.org/debian stretch-backports main
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+
 EOF
     fi
 export DEBIAN_FRONTEND=noninteractive
