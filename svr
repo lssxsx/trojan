@@ -489,15 +489,15 @@ while true; do
 		yellow " 开始安装dnsmasq"
 		green  " ==============="
         dnsmasq
-        if isresolved $domain
-        then
-        :
-        else 
-		green  " =========================="
-		red " 请检查域名和vps的地址是否一致"
-		green  " =========================="
-        exit -1
-        fi
+        #if isresolved $domain
+        #then
+        #:
+        #else 
+		#green  " =========================="
+		#red " 请检查域名和vps的地址是否一致"
+		#green  " =========================="
+        #exit -1
+        #fi
         openfirewall
         green  " =============="
 		yellow " 开始安装trojan"
