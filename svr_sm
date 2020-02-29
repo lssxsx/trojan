@@ -398,40 +398,6 @@ systemctl daemon-reload
    
 }
 
-############安装DNSMASQ#################
-dnsmasq(){
-    if [[ $dist = debian ]]; then
-    export DEBIAN_FRONTEND=noninteractive 
-    apt-get install dnsmasq -q -y > /dev/null
- else
-  clear
-    green  " ==============="
-	red " 安装dnsmasq错误"
-	green  " ==============="
-    exit 1;
- fi
- mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
- touch /etc/dnsmasq.conf
-     cat > '/etc/dnsmasq.conf' << EOF
-port=53
-domain-needed
-bogus-priv
-no-resolv
-server=8.8.4.4#53
-server=1.1.1.1#53
-interface=lo
-bind-interfaces
-listen-address=127.0.0.1
-cache-size=10000
-no-negcache
-log-queries 
-log-facility=/var/log/dnsmasq.log 
-EOF
-echo "nameserver 127.0.0.1" > '/etc/resolv.conf'
-systemctl restart dnsmasq
-systemctl enable dnsmasq
-}
-
 ############安装smartdns#################
 install_sdns(){
 wget -O ~/smartdns.deb $sd
@@ -440,7 +406,7 @@ dpkg -i smartdns.deb
 cat << EOF > /etc/smartdns/smartdns.conf
 bind :53
 cache-size 512
-prefetch-domain yes
+#prefetch-domain yes
 rr-ttl 300
 rr-ttl-min 60
 rr-ttl-max 86400
@@ -448,6 +414,7 @@ log-level info
 log-file /var/log/smartdns.log
 log-size 128k
 log-num 2
+force-AAAA-SOA yes
 # default port is 853
 server-tls 8.8.8.8
 server-tls 8.8.4.4
