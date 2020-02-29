@@ -12,7 +12,7 @@ Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
 </p>
 <h1>Trojan服务端：</h1>
 </p>
-<h1>(smartdns版):</h1>
+<h1>(smartdns+bbrplus版):</h1>
 </p>
 <code>
 apt install wget -y
@@ -20,7 +20,7 @@ apt install wget -y
 bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/svr_sm)
 </code>
 </p>
-<h1>(普通版):</h1>
+<h1>(bbr版):</h1>
 </p>
 <code>
 apt install wget -y
