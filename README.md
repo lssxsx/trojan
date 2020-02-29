@@ -8,6 +8,8 @@ Youtube：米月
 
 Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
 ------------------------------------------------------------------------------------------------------
+<h1>只支持debian10系统</h1>
+</p>
 <h1>Trojan服务端：</h1>
 </p>
 <h1>(smartdns版):</h1>
@@ -38,8 +40,14 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsqu
 </p>
 ------------------------------------------------------------------------------------------------------
 </p>
-支持的系统：
-- debian10
+<h1>DD系统debian10</h1>
+</p>
+<code>
+bash <(wget --no-check-certificate -qO- 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh') -d 10 -v 64 -a
+</code>
+</p>
+</p>
+
 
 
 
