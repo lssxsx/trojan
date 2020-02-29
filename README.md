@@ -9,6 +9,17 @@ Youtube：米月
 Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
 ------------------------------------------------------------------------------------------------------
 <h1>Trojan服务端：</h1>
+</p>
+<h1>(smartdns版):</h1>
+</p>
+<code>
+apt install wget -y
+</p>
+bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/svr_sm)
+</code>
+</p>
+<h1>(普通版):</h1>
+</p>
 <code>
 apt install wget -y
 </p>
