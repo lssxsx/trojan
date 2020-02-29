@@ -494,8 +494,8 @@ while true; do
   green " ========================================================================"
   echo
   green  " 1. 一键安装trojan（包含BBR）"
-  green  " 2. 一键更新trojan"
-  red    " 3. 一键卸载trojan"
+  #green  " 2. 一键更新trojan"
+  #red    " 3. 一键卸载trojan"
   yellow " 0. 退出安装trojan"
   echo
 
