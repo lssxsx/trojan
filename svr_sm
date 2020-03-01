@@ -352,7 +352,8 @@ wget -O ~/smartdns.deb $sd
 dpkg -i smartdns.deb
 
 cat << EOF > /etc/smartdns/smartdns.conf
-bind :53
+bind 127.0.0.1:53
+bind :5533
 cache-size 20480
 #prefetch-domain yes
 rr-ttl 86400
