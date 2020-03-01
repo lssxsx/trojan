@@ -12,7 +12,7 @@ Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
 </p>
 <h1>Trojan服务端：</h1>
 </p>
-<h1>(smartdns+bbrplus版):</h1>
+<h1>(bbrplus版):</h1>
 </p>
 <code>
 apt install wget -y
