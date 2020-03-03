@@ -547,6 +547,7 @@ while true; do
 		red   " 服务器地址：$domain"
 		red   " 服务器端口：443"
 		red   " 服务器密码：$passwordd"
+    red   " TLS1.3加密：TLS_AES_128_GCM_SHA256"
 		red   " 忘记密码修改文件：/usr/local/etc/trojan/config.json"
 		green " ========================================================================="
         break
