@@ -357,8 +357,8 @@ bind :5533
 cache-size 20480
 #prefetch-domain yes
 rr-ttl 86400
-rr-ttl-min 3600
-rr-ttl-max 604800
+#rr-ttl-min 3600
+#rr-ttl-max 604800
 log-level info
 log-file /var/log/smartdns.log
 log-size 128k
