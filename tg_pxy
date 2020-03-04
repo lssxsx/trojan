@@ -516,7 +516,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
 		;;
 	#Uninstall proxy
 	10)
-		read -r -p "I still keep some packages like python. Do want to uninstall MTProto-Proxy?(y/n) " OPTION
+		read -r -p "确认不在使用tg代理?(y/n) " OPTION
 		OPTION="$(echo $OPTION | tr '[A-Z]' '[a-z]')"
 		case $OPTION in
 		"y")
