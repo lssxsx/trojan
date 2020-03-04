@@ -348,8 +348,8 @@ autostart(){
 
 ############安装smartdns#################
 install_sdns(){
-wget -O ~/smartdns.deb $sd
-dpkg -i smartdns.deb
+wget --no-check-certificate -O ~/smartdns.deb $smartdns_amd64
+dpkg -i ~/smartdns.deb
 
 cat << EOF > /etc/smartdns/smartdns.conf
 bind 127.0.0.1:53
