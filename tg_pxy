@@ -614,7 +614,7 @@ chmod 0777 config.py
 echo "PORT = $PORT
 USERS = { $SECRETS }
 USER_MAX_TCP_CONNS = { $LIMITER_CONFIG }
-TLS_DOMAIN = "www.baidu.com"
+TLS_DOMAIN = \"www.baidu.com\"
 " >>config.py
 if [ -n "$TAG" ]; then
 	TAGTEMP="AD_TAG = "
