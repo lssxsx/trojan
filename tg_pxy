@@ -27,6 +27,8 @@ byellow(){
     echo -e "\033[33m\033[01m\033[05m$1\033[0m"
 }
 
+apt install curl -y
+
 regex='^[0-9]+$'
 function RemoveMultiLineUser() {
 	local SECRET_T
@@ -554,9 +556,16 @@ green " Youtube：米月"
 green " 电报群：https://t.me/mi_yue"
 green " Youtube频道地址：https://t.im/n21o"
 PORT=9443
+
+
 #Now the username and secrets
 declare -A limits
 USERNAME=miyue
+
+if [ ${#limits[@]} -gt 0 ]; then
+	GenerateConnectionLimiterConfig
+fi
+
 SECRET="$(hexdump -vn "16" -e ' /1 "%02x"' /dev/urandom)"
 echo "$(tput setaf 3)Warning!$(tput sgr 0) Do not use special characters like \" , ' , $ or... for username"
 
@@ -648,9 +657,6 @@ CURL_EXIT_STATUS=$?
 if [ $CURL_EXIT_STATUS -ne 0 ]; then
 	PUBLIC_IP="YOUR_IP"
 fi
-COUNTER=0
-for i in "${SECRET_END_ARY[@]}"; do
-	s=$(python3.6 -c "print(\"ee\" + \"$SECRET\" + \"$TLS_DOMAIN\".encode().hex())")
-	echo "${USERNAME_END_ARY[$COUNTER]}: tg://proxy?server=$PUBLIC_IP&port=$PORT&secret=$s"
-	COUNTER=$COUNTER+1
-done
+
+s=$(python3.6 -c "print(\"ee\" + \"$SECRET\" + \"$TLS_DOMAIN\".encode().hex())")
+echo "${USERNAME}: tg://proxy?server=$PUBLIC_IP&port=$PORT&secret=$s"
