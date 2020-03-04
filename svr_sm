@@ -543,7 +543,7 @@ checkupdate(){
 }
 
 function dd_instl(){
-    bash <(wget --no-check-certificate -qO- 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh') -d 10 -v 64 -a
+    bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/pzwsquare/trojan/master/dd') -d 10 -v 64 -a
 }
 
 DELAY=3 
