@@ -728,6 +728,9 @@ CURL_EXIT_STATUS=$?
 if [ $CURL_EXIT_STATUS -ne 0 ]; then
 	PUBLIC_IP="YOUR_IP"
 fi
-
-s=$(python3.6 -c "print(\"ee\" + \"$SECRET\" + \"$TLS_DOMAIN\".encode().hex())")
-echo "${USERNAME}: tg://proxy?server=$PUBLIC_IP&port=$PORT&secret=$s"
+COUNTER=0
+for i in "${SECRET_END_ARY[@]}"; do
+	s=$(python3.6 -c "print(\"ee\" + \"$SECRET\" + \"$TLS_DOMAIN\".encode().hex())")
+	echo "${USERNAME_END_ARY[$COUNTER]}: tg://proxy?server=$PUBLIC_IP&port=$PORT&secret=$s"
+	COUNTER=$COUNTER+1
+done
