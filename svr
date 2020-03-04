@@ -463,6 +463,10 @@ function dd_instl(){
     bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/pzwsquare/trojan/master/dd') -d 10 -v 64 -a
 }
 
+function tg_pxy(){
+    bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsquare/trojan/master/tg_pxy)
+}
+
 
 DELAY=3 
 
@@ -474,18 +478,20 @@ while true; do
   green " Youtube：米月"
   green " 电报群：https://t.me/mi_yue"
   green " Youtube频道地址：https://t.im/n21o"
-  green " 版本：20200304v1"
+  green " 版本：20200304v3"
   green " ========================================================================"
   echo
   green  " 1. 一键安装trojan（包含BBR）"
-  green  " 2. 一键更新trojan"
-  red    " 3. 一键卸载trojan"
+  #green  " 2. 一键更新trojan"
+  #red    " 3. 一键卸载trojan"
+  green  " 4. 一键tg代理（端口默认9443）"
+  green  " 5. 一键DD系统（登录密码：MoeClub.org）"
   yellow " 0. 退出安装trojan"
   echo
 
-  read -p "请输入数字[0-4] > "
+  read -p "请输入数字[0-5] > "
 
-  if [[ $REPLY =~ ^[0-4]$ ]]; then
+  if [[ $REPLY =~ ^[0-5]$ ]]; then
     case $REPLY in
       1)
         userinput
@@ -570,9 +576,13 @@ while true; do
         break
         ;;    
       4)
+        tg_pxy
+        break
+        ;; 
+      5)
         dd_instl
         break
-        ;;       
+        ;;      
       0)
         break
         ;;
