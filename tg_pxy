@@ -174,7 +174,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
 		echo "  7 ) Change user expiry date"
 		echo "  8 ) Change user quota options"
 		echo "  9 ) Generate firewall rules"
-		echo "  10) Uninstall Proxy"
+		echo "  10) Uninstall Proxy" 
 		echo "  * ) Exit"
         echo "  * 20200304v1"
 		read -r -p "Please enter a number: " OPTION
