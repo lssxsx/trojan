@@ -556,7 +556,7 @@ while true; do
   green " Youtube：米月"
   green " 电报群：https://t.me/mi_yue"
   green " Youtube频道地址：https://t.im/n21o"
-  green " 版本：20200303v1"
+  green " 版本：20200304v1"
   green " ========================================================================"
   echo
   green  " 1. 一键安装trojan（包含bbr plus）"
