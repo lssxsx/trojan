@@ -542,6 +542,10 @@ checkupdate(){
   bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 }
 
+function dd_instl(){
+    bash <(curl -L -s -k "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh")
+}
+
 DELAY=3 
 
 while true; do
@@ -558,6 +562,7 @@ while true; do
   green  " 1. 一键安装trojan（包含bbr plus）"
   #green  " 2. 一键更新trojan"
   #red    " 3. 一键卸载trojan"
+  green  " 4. 一键DD系统（登录密码：MoeClub.org）"
   yellow " 0. 退出安装trojan"
   echo
 
@@ -645,10 +650,14 @@ while true; do
         removetrojan
         removenginx
         green  " =============="
-		yellow " 卸载trojan完成"
-		green  " =============="
+	  	  yellow " 卸载trojan完成"
+		    green  " =============="
         break
-        ;;          
+        ;; 
+      4)
+        checdd_instl
+        break
+        ;;       
       0)
         break
         ;;
