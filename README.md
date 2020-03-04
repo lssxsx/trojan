@@ -40,15 +40,7 @@ bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/pzwsqu
 </code>
 </p>
 </p>
-------------------------------------------------------------------------------------------------------
-</p>
-<h1>DD系统debian10</h1>
-</p>
-<code>
-bash <(wget --no-check-certificate -qO- 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh') -d 10 -v 64 -a
-</code>
-</p>
-</p>
+
 
 
 
