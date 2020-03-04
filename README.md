@@ -6,7 +6,7 @@ Youtube：米月
 
 电报群：https://t.me/mi_yue
 
-Youtube频道地址：https://www.youtube.com/channel/UCr4HCEgaZ0cN5_7tLHS_xAg
+Youtube频道地址：https://t.im/n21o
 ------------------------------------------------------------------------------------------------------
 <h1>只支持debian10系统</h1>
 </p>
