@@ -566,7 +566,7 @@ while true; do
   yellow " 0. 退出安装trojan"
   echo
 
-  read -p "请输入数字[0-3] > "
+  read -p "请输入数字[0-4] > "
 
   if [[ $REPLY =~ ^[0-4]$ ]]; then
     case $REPLY in
