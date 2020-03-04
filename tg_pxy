@@ -176,6 +176,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
 		echo "  9 ) Generate firewall rules"
 		echo "  10) Uninstall Proxy"
 		echo "  * ) Exit"
+        echo "  * 20200304v1"
 		read -r -p "Please enter a number: " OPTION
 	fi
 	case $OPTION in
