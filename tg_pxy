@@ -163,7 +163,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
 	else
     echo ""
   green " 已成功安装好tg代理"
-  green " 版本：20200304v1"
+  green " 版本：20200304v2"
   green " ========================================================================"
 		echo "  1 ) 显示在用得tg代理链接"
 		#echo "  2 ) Upgrade proxy software"
@@ -174,7 +174,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
 		#echo "  7 ) Change user expiry date"
 		#echo "  8 ) Change user quota options"
 		#echo "  9 ) Generate firewall rules"
-		echo "  10) Uninstall Proxy"
+		echo "  10) 删除tg代理"
 		echo "  * ) Exit"
 		read -r -p "请选择: " OPTION
 	fi
@@ -555,7 +555,7 @@ green " ========================================================================
   green " Youtube：米月"
   green " 电报群：https://t.me/mi_yue"
   green " Youtube频道地址：https://t.im/n21o"
-  green " 版本：20200304v1"
+  green " 版本：20200304v2"
   green " ========================================================================"
 echo ""
 #read -r -p "Select a port to proxy listen on it (-1 to randomize): " -e -i "443" PORT
