@@ -459,6 +459,11 @@ checkupdate(){
   bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 }
 
+function dd_instl(){
+    bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/pzwsquare/trojan/master/dd') -d 10 -v 64 -a
+}
+
+
 DELAY=3 
 
 while true; do
@@ -469,7 +474,7 @@ while true; do
   green " Youtube：米月"
   green " 电报群：https://t.me/mi_yue"
   green " Youtube频道地址：https://t.im/n21o"
-  green " 版本：20200303v1"
+  green " 版本：20200304v1"
   green " ========================================================================"
   echo
   green  " 1. 一键安装trojan（包含BBR）"
@@ -478,9 +483,9 @@ while true; do
   yellow " 0. 退出安装trojan"
   echo
 
-  read -p "请输入数字[0-3] > "
+  read -p "请输入数字[0-4] > "
 
-  if [[ $REPLY =~ ^[0-3]$ ]]; then
+  if [[ $REPLY =~ ^[0-4]$ ]]; then
     case $REPLY in
       1)
         userinput
@@ -560,10 +565,14 @@ while true; do
         removetrojan
         removenginx
         green  " =============="
-		yellow " 卸载trojan完成"
-		green  " =============="
+	  	  yellow " 卸载trojan完成"
+		    green  " =============="
         break
-        ;;          
+        ;;    
+      4)
+        dd_instl
+        break
+        ;;       
       0)
         break
         ;;
