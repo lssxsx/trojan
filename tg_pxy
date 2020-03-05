@@ -165,7 +165,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
   green " 已成功安装好tg代理"
   green " 版本：20200304v2"
   green " ========================================================================"
-		echo "  1 ) 显示在用得tg代理链接"
+		echo "  1 ) 显示在用tg代理链接"
 		#echo "  2 ) Upgrade proxy software"
 		#echo "  3 ) Change AD TAG"
 		#echo "  4 ) Add a secret"
