@@ -346,65 +346,6 @@ autostart(){
   systemctl enable trojan
 }
 
-############安装smartdns#################
-install_sdns(){
-wget --no-check-certificate -O ~/smartdns.deb $sd
-dpkg -i ~/smartdns.deb
-
-cat << EOF > /etc/smartdns/smartdns.conf
-bind 127.0.0.1:53
-bind :5533
-cache-size 20480
-#prefetch-domain yes
-rr-ttl 86400
-#rr-ttl-min 3600
-#rr-ttl-max 604800
-log-level info
-log-file /var/log/smartdns.log
-log-size 128k
-log-num 2
-force-AAAA-SOA yes
-# default port is 853
-server-tls 8.8.8.8
-server-tls 8.8.4.4
-server-tls 1.0.0.1
-# default port is 443
-server-https https://dns.google/dns-query
-server-https https://cloudflare-dns.com/dns-query
-EOF
-
-echo "" > /run/smartdns.pid
-cat << EOF > /lib/systemd/system/smartdns.service
-[Unit]
-Description=Smart DNS server
-After=network-online.target
-Before=nss-lookup.target
-Wants=network-online.target
-[Service]
-Type=forking
-PIDFile=/run/smartdns.pid
-EnvironmentFile=/etc/default/smartdns
-ExecStart=/usr/sbin/smartdns $SMART_DNS_OPTS
-KillMode=process
-Restart=always
-RestartSec=2s
-LimitNPROC=1000000
-LimitNOFILE=1000000
-[Install]
-WantedBy=multi-user.target
-EOF
-rm -rf ~/smartdns.deb
-
-echo "nameserver 127.0.0.1" > '/etc/resolv.conf'
-
-systemctl daemon-reload > /dev/null 2>&1
-systemctl enable smartdns > /dev/null 2>&1
-systemctl restart smartdns > /dev/null 2>&1
-}
-
-
-
-
 
 ##########卸载Trojan-Gfw##########
 removetrojan(){
@@ -470,10 +411,7 @@ while true; do
         userinput
         osdist
         updatesystem
-    green  " ==============="
-		yellow " 开始安装smartdns"
-		green  " ==============="
-        install_sdns
+   
         #dnsmasq
         #if isresolved $domain
         #then
@@ -517,7 +455,7 @@ while true; do
         green  " ======================"
 		yellow " 设置自启动trojan nginx"
 		green  " ======================"
-        
+        autostart
 		green " ========================================================================="
 		green " 简介：debian一键安装trojan"
 		green " 系统：debian10"
