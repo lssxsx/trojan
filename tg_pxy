@@ -725,7 +725,8 @@ elif [[ $distro =~ "Debian" ]]; then
 		tar xvf Python-3.6.9.tar.xz
 		cd Python-3.6.9 || exit 2
 		read -r -p "$(tput setaf 4)Question:$(tput sgr 0) Do you want to enable optimizations while building python? If yes, building will take much longer but the python will be faster. (y/n): " -e -i "y" OPTION
-		if [[ $OPTION == "y" || $OPTION == "Y" ]]; then
+		OPTION=n
+        if [[ $OPTION == "y" || $OPTION == "Y" ]]; then
 			./configure --enable-optimizations
 		else
 			./configure
