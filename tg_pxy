@@ -163,7 +163,7 @@ if [ -d "/opt/mtprotoproxy" ]; then
 	else
     echo ""
   green " 已成功安装好tg代理"
-  green " 版本：20200304v2"
+  green " 版本：20200305v1"
   green " ========================================================================"
 		echo "  1 ) 显示在用tg代理链接"
 		#echo "  2 ) Upgrade proxy software"
@@ -555,7 +555,7 @@ green " ========================================================================
   green " Youtube：米月"
   green " 电报群：https://t.me/mi_yue"
   green " Youtube频道地址：https://t.im/n21o"
-  green " 版本：20200304v2"
+  green " 版本：20200305v1"
   green " ========================================================================"
 echo ""
 #read -r -p "Select a port to proxy listen on it (-1 to randomize): " -e -i "443" PORT
@@ -724,7 +724,7 @@ elif [[ $distro =~ "Debian" ]]; then
 		curl -o Python-3.6.9.tar.xz https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tar.xz
 		tar xvf Python-3.6.9.tar.xz
 		cd Python-3.6.9 || exit 2
-		read -r -p "$(tput setaf 4)Question:$(tput sgr 0) Do you want to enable optimizations while building python? If yes, building will take much longer but the python will be faster. (y/n): " -e -i "y" OPTION
+		#read -r -p "$(tput setaf 4)Question:$(tput sgr 0) Do you want to enable optimizations while building python? If yes, building will take much longer but the python will be faster. (y/n): " -e -i "y" OPTION
 		OPTION=n
         if [[ $OPTION == "y" || $OPTION == "Y" ]]; then
 			./configure --enable-optimizations
