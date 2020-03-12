@@ -168,7 +168,7 @@ EOF
 	#设置伪装站
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
-	wget https://github.com/atrandys/v2ray-ws-tls/raw/master/web.zip
+	wget https://raw.githubusercontent.com/lssxsx/trojan/master/newweb.zip
     	unzip web.zip
 	systemctl stop nginx
 	sleep 5
