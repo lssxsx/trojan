@@ -236,8 +236,8 @@ server {
     #}
 }
 EOF
-  wget https://raw.githubusercontent.com/lssxsx/trojan/master/web.zip
-    unzip web.zip
+  wget https://raw.githubusercontent.com/lssxsx/trojan/master/newweb.zip
+    unzip newweb.zip
   rm -rf /usr/share/nginx/html/*
   mv ./index.html /usr/share/nginx/html/
   rm -rf web.zip
