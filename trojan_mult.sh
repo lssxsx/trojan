@@ -169,7 +169,7 @@ EOF
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
 	wget https://raw.githubusercontent.com/lssxsx/trojan/master/newweb.zip
-    	unzip web.zip
+    	unzip newweb.zip
 	systemctl stop nginx
 	sleep 5
 	#申请https证书
