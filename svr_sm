@@ -240,7 +240,7 @@ EOF
     unzip newweb.zip
   rm -rf /usr/share/nginx/html/*
   mv ./index.html /usr/share/nginx/html/
-  rm -rf web.zip
+  rm -rf newweb.zip
   systemctl start nginx
   sudo ~/.acme.sh/acme.sh --issue --nginx -d $domain -k ec-256 --force --log
 }
